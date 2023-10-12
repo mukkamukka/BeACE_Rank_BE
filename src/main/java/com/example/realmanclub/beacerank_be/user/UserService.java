@@ -20,6 +20,10 @@ public class UserService {
         return userRepository.findAllByUser();
     }
 
+    public List<User> findAllRanking() {
+        return userRepository.findUserByOrderByScoreDesc();
+    }
+
     public User signUpUser(UserSignUpDTO userSignUpDTO){
         User user = new User();
         int deptId;

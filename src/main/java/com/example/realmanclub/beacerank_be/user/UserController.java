@@ -39,6 +39,11 @@ public class UserController {
         } else {
             return ResponseEntity.ok("로그인 실패");
         }
+    }
 
+    @GetMapping("/allRanking")
+    public ResponseEntity<List<User>> getAllRanking() {
+        List<User> userList = userService.findAllRanking();
+        return ResponseEntity.ok(userList);
     }
 }

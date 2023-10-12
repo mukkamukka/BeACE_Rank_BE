@@ -13,4 +13,6 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     @Query("select u from User u")
     List<User> findAllByUser();
+
+    List<User> findUserByOrderByScoreDesc();
 }
