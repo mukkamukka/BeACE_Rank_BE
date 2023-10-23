@@ -1,5 +1,6 @@
 package com.example.realmanclub.beacerank_be.user;
 
+import com.example.realmanclub.beacerank_be.ranking.UserRating;
 import com.example.realmanclub.beacerank_be.user.dto.UserSignInDTO;
 import com.example.realmanclub.beacerank_be.user.dto.UserSignUpDTO;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin("https://localhost:3000")
+@CrossOrigin("*")
 public class UserController {
 
     @Autowired
@@ -39,6 +40,6 @@ public class UserController {
         } else {
             return ResponseEntity.ok("로그인 실패");
         }
-
     }
+
 }

@@ -1,5 +1,6 @@
 package com.example.realmanclub.beacerank_be.user;
 
+import com.example.realmanclub.beacerank_be.ranking.UserRating;
 import com.example.realmanclub.beacerank_be.user.dto.UserSignInDTO;
 import com.example.realmanclub.beacerank_be.user.dto.UserSignUpDTO;
 import lombok.RequiredArgsConstructor;
