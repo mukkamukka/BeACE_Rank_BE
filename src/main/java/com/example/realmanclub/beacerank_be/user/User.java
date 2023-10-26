@@ -22,7 +22,7 @@ public class User {
     @Column(name = "student_name")
     private String name;
     @Column(name = "department_id")
-    private int deptId;
+    private String deptId;
     @Column(name = "beace_total_score")
     private int score;
     private int grade;
