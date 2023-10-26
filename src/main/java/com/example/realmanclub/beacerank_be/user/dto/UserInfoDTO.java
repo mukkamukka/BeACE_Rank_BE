@@ -9,12 +9,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserSignUpDTO {
+public class UserInfoDTO {
     private String id;
     private String name;
-    private String deptName;
-    private int currentBeACEScore;
+    private String deptId;
+    private int score;
     private int grade;
-    private String password;
-    private String confirmPassword;
+    private float deviation;
 }

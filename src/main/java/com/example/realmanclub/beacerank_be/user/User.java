@@ -30,5 +30,4 @@ public class User {
     private float deviation;
     private String password;
     private Timestamp created_at;
-
 }
