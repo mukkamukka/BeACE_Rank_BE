@@ -1,6 +1,6 @@
 package com.example.realmanclub.beacerank_be.user;
 
-import com.example.realmanclub.beacerank_be.ranking.UserRating;
+import com.example.realmanclub.beacerank_be.user.dto.UserInfoDTO;
 import com.example.realmanclub.beacerank_be.user.dto.UserSignInDTO;
 import com.example.realmanclub.beacerank_be.user.dto.UserSignUpDTO;
 import lombok.RequiredArgsConstructor;
@@ -18,29 +18,17 @@ public class UserService {
     private final UserRepository userRepository;
 
     public List<User> findAllUserInfo(){
-        return userRepository.findAllByUser();
+        return userRepository.findAll();
     }
 
     public User signUpUser(UserSignUpDTO userSignUpDTO){
         User user = new User();
-        int deptId;
-        switch (userSignUpDTO.getDeptName()){
-            case "컴퓨터정보학부":
-                deptId = 1;
-                break;
-            case "사회복지학과":
-                deptId = 2;
-                break;
-            default:
-                deptId = 0;
-                break;
-        }
         user.setId(userSignUpDTO.getId());
         user.setName(userSignUpDTO.getName());
-        user.setDeptId(deptId);
+        user.setDeptId(userSignUpDTO.getDeptName());
         user.setScore(userSignUpDTO.getCurrentBeACEScore());
         user.setGrade(userSignUpDTO.getGrade());
-        user.setDeviation(0);
+        user.setDeviation(1);
         user.setPassword(userSignUpDTO.getPassword());
         user.setCreated_at(new Timestamp(System.currentTimeMillis()));
         return userRepository.save(user);
@@ -49,5 +37,17 @@ public class UserService {
     public boolean signInUser(UserSignInDTO userSignInDTO){
         User user = userRepository.findById(userSignInDTO.getId()).get();
         return user.getPassword().equals(userSignInDTO.getPassword());
+    }
+
+    public UserInfoDTO findUserInfo(String userId){
+        User user = userRepository.findById(userId).get();
+        UserInfoDTO userInfoDTO = new UserInfoDTO();
+        userInfoDTO.setId(user.getId());
+        userInfoDTO.setName(user.getName());
+        userInfoDTO.setDeptId(user.getDeptId());
+        userInfoDTO.setScore(user.getScore());
+        userInfoDTO.setGrade(user.getGrade());
+        userInfoDTO.setDeviation(user.getDeviation());
+        return userInfoDTO;
     }
 }
