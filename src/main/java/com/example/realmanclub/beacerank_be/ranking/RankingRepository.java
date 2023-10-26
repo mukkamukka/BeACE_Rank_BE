@@ -12,4 +12,6 @@ public interface RankingRepository extends JpaRepository<User, String> {
 
     List<User> findUserByGradeOrderByScoreDesc(int grade);
 
+    List<User> findUserByScoreGreaterThanEqual(int standard);
+
 }

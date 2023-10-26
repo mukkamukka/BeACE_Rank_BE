@@ -26,4 +26,10 @@ public class RankingService {
         List<UserRating> userRatingList = userList.stream().map(UserRating::fromUser).toList();
         return userRatingList;
     }
+
+    public List<UserRating> findAwardRanking() {
+        List<User> userList = rankingRepository.findUserByScoreGreaterThanEqual(150);
+        List<UserRating> userRatingList = userList.stream().map(UserRating::fromUser).toList();
+        return userRatingList;
+    }
 }

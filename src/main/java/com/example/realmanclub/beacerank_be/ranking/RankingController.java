@@ -28,4 +28,10 @@ public class RankingController {
         List<UserRating> userRatingList = rankingService.findAllRankingGrade(grade);
         return ResponseEntity.ok(userRatingList);
     }
+
+    @GetMapping("/awardRanking")
+    public ResponseEntity<List<UserRating>> getAwardRanking() {
+        List<UserRating> userRatingList = rankingService.findAwardRanking();
+        return ResponseEntity.ok(userRatingList);
+    }
 }
