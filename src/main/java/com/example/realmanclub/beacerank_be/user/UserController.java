@@ -1,10 +1,11 @@
 package com.example.realmanclub.beacerank_be.user;
 
-import com.example.realmanclub.beacerank_be.ranking.UserRating;
+import com.example.realmanclub.beacerank_be.user.dto.UserInfoDTO;
 import com.example.realmanclub.beacerank_be.user.dto.UserSignInDTO;
 import com.example.realmanclub.beacerank_be.user.dto.UserSignUpDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin("*")
+@CrossOrigin("https://localhost:3000")
 public class UserController {
 
     @Autowired
@@ -27,19 +28,23 @@ public class UserController {
     @PostMapping("/signUp")
     public ResponseEntity<User> signUp(@RequestBody UserSignUpDTO userSignUpDTO) {
         User user = userService.signUpUser(userSignUpDTO);
-        if (!userSignUpDTO.getPassword().equals(userSignUpDTO.getConfirmPassword())){
-
+        if (!userSignUpDTO.getPassword().equals(userSignUpDTO.getConfirmPassword())) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return ResponseEntity.ok(user);
     }
 
     @PostMapping("/signIn")
-    public ResponseEntity<String> singIn(@RequestBody UserSignInDTO userSignInDTO){
-        if (userService.signInUser(userSignInDTO)){
+    public ResponseEntity<String> singIn(@RequestBody UserSignInDTO userSignInDTO) {
+        if (userService.signInUser(userSignInDTO)) {
             return ResponseEntity.ok("로그인 완료");
         } else {
-            return ResponseEntity.ok("로그인 실패");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
+    @GetMapping("/findUserInfo")
+    public ResponseEntity<UserInfoDTO> findUser(@RequestParam String userId) {
+        return ResponseEntity.ok(userService.findUserInfo(userId));
+    }
 }

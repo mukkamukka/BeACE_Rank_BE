@@ -13,7 +13,7 @@ import static java.lang.Integer.parseInt;
 public class UserRating {
     private String id;
     private String name;
-    private int deptId;
+    private String deptId;
     private int score;
     private int grade;
     private float deviation;
