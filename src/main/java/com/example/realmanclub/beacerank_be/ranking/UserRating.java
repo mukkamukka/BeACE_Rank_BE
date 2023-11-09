@@ -11,7 +11,7 @@ import static java.lang.Integer.parseInt;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserRating {
-    private String id;
+    private int id;
     private String name;
     private String deptId;
     private int score;

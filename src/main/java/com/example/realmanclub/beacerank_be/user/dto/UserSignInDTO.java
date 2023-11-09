@@ -10,6 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserSignInDTO {
-    private String id;
+    private int id;
     private String password;
 }

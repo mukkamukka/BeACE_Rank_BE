@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserInfoDTO {
-    private String id;
+    private int id;
     private String name;
     private String deptId;
     private int score;
