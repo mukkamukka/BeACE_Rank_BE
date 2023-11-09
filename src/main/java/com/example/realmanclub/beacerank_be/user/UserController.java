@@ -1,5 +1,6 @@
 package com.example.realmanclub.beacerank_be.user;
 
+import com.example.realmanclub.beacerank_be.completionList.CompletionList;
 import com.example.realmanclub.beacerank_be.user.dto.UserInfoDTO;
 import com.example.realmanclub.beacerank_be.user.dto.UserSignInDTO;
 import com.example.realmanclub.beacerank_be.user.dto.UserSignUpDTO;
@@ -44,7 +45,12 @@ public class UserController {
     }
 
     @GetMapping("/findUserInfo")
-    public ResponseEntity<UserInfoDTO> findUser(@RequestParam String userId) {
+    public ResponseEntity<UserInfoDTO> findUser(@RequestParam int userId) {
         return ResponseEntity.ok(userService.findUserInfo(userId));
+    }
+
+    @GetMapping("/findUserCompletionList")
+    public ResponseEntity<List<CompletionList>> findCom(@RequestParam int userId) {
+        return ResponseEntity.ok(userService.findCom(userId));
     }
 }

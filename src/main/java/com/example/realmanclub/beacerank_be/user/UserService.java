@@ -1,5 +1,6 @@
 package com.example.realmanclub.beacerank_be.user;
 
+import com.example.realmanclub.beacerank_be.completionList.CompletionList;
 import com.example.realmanclub.beacerank_be.user.dto.UserInfoDTO;
 import com.example.realmanclub.beacerank_be.user.dto.UserSignInDTO;
 import com.example.realmanclub.beacerank_be.user.dto.UserSignUpDTO;
@@ -39,7 +40,7 @@ public class UserService {
         return user.getPassword().equals(userSignInDTO.getPassword());
     }
 
-    public UserInfoDTO findUserInfo(String userId){
+    public UserInfoDTO findUserInfo(int userId){
         User user = userRepository.findById(userId).get();
         UserInfoDTO userInfoDTO = new UserInfoDTO();
         userInfoDTO.setId(user.getId());
@@ -49,5 +50,10 @@ public class UserService {
         userInfoDTO.setGrade(user.getGrade());
         userInfoDTO.setDeviation(user.getDeviation());
         return userInfoDTO;
+    }
+
+    public List<CompletionList> findCom(int userId) {
+        User user = userRepository.findById(userId).get();
+        return user.getCompletionList();
     }
 }
