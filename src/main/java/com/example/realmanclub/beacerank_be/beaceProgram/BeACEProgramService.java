@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,5 +20,9 @@ public class BeACEProgramService {
 
     public List<BeACEProgram> findByMainCategory(String mainCategory){
         return beACEProgramRepository.findAllByMainCategory(mainCategory);
+    }
+
+    public Optional<BeACEProgram> findBeACEProgram(String id) {
+        return beACEProgramRepository.findById(id);
     }
 }

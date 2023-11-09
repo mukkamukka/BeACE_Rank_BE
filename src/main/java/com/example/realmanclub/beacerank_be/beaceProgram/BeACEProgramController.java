@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,6 +24,11 @@ public class BeACEProgramController {
 
     @GetMapping("/findMainCategory")
     public ResponseEntity<List<BeACEProgram>> findMainCategory(@RequestParam String mainCategory){
-        return ResponseEntity.ok((beACEProgramService.findByMainCategory(mainCategory)));
+        return ResponseEntity.ok(beACEProgramService.findByMainCategory(mainCategory));
+    }
+
+    @GetMapping("/findBeACEProgram")
+    public ResponseEntity<Optional<BeACEProgram>> findBeACEProgram(@RequestParam String id) {
+        return ResponseEntity.ok(beACEProgramService.findBeACEProgram(id));
     }
 }
