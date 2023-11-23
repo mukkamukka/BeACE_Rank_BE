@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -55,5 +56,9 @@ public class UserService {
     public List<CompletionList> findCom(int userId) {
         User user = userRepository.findById(userId).get();
         return user.getCompletionList();
+    }
+
+    public boolean duplicateId(int userId) {
+        return userRepository.existsById(userId);
     }
 }
