@@ -13,7 +13,6 @@ public class UserSignUpDTO {
     private int id;
     private String name;
     private String deptName;
-    private int currentBeACEScore;
     private int grade;
     private String password;
     private String confirmPassword;
