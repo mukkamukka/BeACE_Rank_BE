@@ -5,18 +5,15 @@ import com.example.realmanclub.beacerank_be.user.dto.UserInfoDTO;
 import com.example.realmanclub.beacerank_be.user.dto.UserSignInDTO;
 import com.example.realmanclub.beacerank_be.user.dto.UserSignUpDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
-    @Autowired
     private final UserRepository userRepository;
 
     public List<User> findAllUserInfo(){

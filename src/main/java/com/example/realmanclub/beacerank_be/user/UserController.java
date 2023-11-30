@@ -15,10 +15,9 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin("https://localhost:3000")
+@CrossOrigin("*")
 public class UserController {
 
-    @Autowired
     private final UserService userService;
 
     @GetMapping("/userList")

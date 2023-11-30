@@ -11,7 +11,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BeACEProgramService {
 
-    @Autowired
     private final BeACEProgramRepository beACEProgramRepository;
 
     public List<BeACEProgram> findAllRoadMap(){
